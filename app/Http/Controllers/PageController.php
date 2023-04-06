@@ -62,7 +62,7 @@ class PageController extends Controller
   {
 
     foreach (self::$flights as $volo) {
-      if ($id == $volo['id']) {
+      if ($volo['id']==$id)   {
         return view('show', ['volo' => $volo]);
       }
     }
@@ -74,4 +74,14 @@ class PageController extends Controller
 
     return view('contact');
   }
+
+  public function send(Request $request)
+  {
+    dd($request->all());
+
+    return view('send');
+  }
 }
+
+  
+

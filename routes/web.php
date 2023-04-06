@@ -18,7 +18,10 @@ use App\Http\Controllers\PageController;
 Route::get('/', [PageController::class, 'homepage'])->name('homepage');
 Route::get('/voli', [PageController::class, 'list'])->name('list');
 Route::get('/voli/dettagli/{id}', [PageController::class, 'show'])->name('show');
+
+
 Route::get('/contattaci', [PageController::class, 'contact'])->name('contact');
+Route::post('/contattaci/invia', [PageController::class, 'send'])->name('send');
 
 
 
