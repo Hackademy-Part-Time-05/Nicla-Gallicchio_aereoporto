@@ -21,8 +21,11 @@ Route::get('/voli/dettagli/{id}', [PageController::class, 'show'])->name('show')
 
 
 Route::get('/contattaci', [PageController::class, 'contact'])->name('contact');
-Route::post('/contattaci/invia', [PageController::class, 'send'])->name('send');
 
+Route::post('/contattaci/invia', [PageController::class, 'send'])->name('send');
+Route::get('/thank-you', function(){
+    return 'Grazie';
+} )->name('thankyou');
 
 
 

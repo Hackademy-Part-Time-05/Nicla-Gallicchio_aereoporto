@@ -2,23 +2,33 @@
 
 
     <div class="container py-4">
+                @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
         <form action="{{route('send')}}" method="POST">
 
           @csrf
           <div class="mb-3">
             <label class="form-label">Nome</label>
-            <input class="form-control" type="text" placeholder="Nome" name="nome" value="{{old('name')}}"/>
+            <input class="form-control" type="text" placeholder="Nome" name="name" value="{{old('name')}}"/>
           </div>
       
           <!--  -->
           <div class="mb-3">
+            
             <label class="form-label">Telefono</label>
             <input class="form-control" type="text" placeholder="" name="phone" value="{{old('phone')}}" />
           </div>
         <!--  -->
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input class="form-control" type="email" placeholder="Email" name="email" value="{{old('email')}}" />
+            <input class="form-control" type="text" placeholder="Email" name="email" value="{{old('email')}}" />
           </div>
           <!-- -->
           <div class="mb-3">

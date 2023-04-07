@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InfoMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -77,9 +79,23 @@ class PageController extends Controller
 
   public function send(Request $request)
   {
-    dd($request->all());
 
-    return view('send');
+    $request->validate([
+      'name' => 'required|max:20',
+      'phone' => 'required|numeric',
+      'email'=> 'required|email',
+      'message' => 'required|min:5',
+    ]);
+
+    $data=[
+      'name' => $request->name,
+      'phone' => $request->phone,
+      'email'=> $request->email,
+      'message' => $request->message,
+    ];
+    
+    Mail::to($request->email)->send(new InfoMail($data));
+    return redirect()->route('thankyou');
   }
 }
 
